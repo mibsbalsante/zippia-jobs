@@ -1,0 +1,89 @@
+.card {
+  position: relative;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 0 4px -2px var(--color-shadow);
+  background-color: var(--color-bg-2);
+}
+
+.title {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+
+  &Logo {
+    max-height: 24px;
+  }
+
+  &Name {
+    font-weight: 600;
+  }
+}
+
+.shortDescription {
+  max-height: 7.5rem; /* browser compatibility */
+  overflow: hidden;
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  p {
+    margin: 0;
+  }
+
+  button {
+    margin-left: auto;
+  }
+
+  &Separator {
+    font-size: 2rem;
+    line-height: 0;
+    margin-bottom: 6px;
+
+    &::after {
+      content: "\00B7";
+    }
+  }
+}
+
+.jobLevel {
+  cursor: default;
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.apply {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 0 none;
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  min-width: 96px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-blue-2);
+    color: var(--color-white);
+  }
+}
