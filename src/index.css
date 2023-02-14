@@ -1,11 +1,28 @@
-:root {
+:root,
+button {
+  font-size: 1rem;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
 
+:root {
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
+  /* global vars */
+  --color-white: #fff;
+
+  --color-blue: #3174ee;
+  --color-blue-2: #0041bb;
+
+  --color-gray-1: #e6edf3;
+  --color-gray-2: #2e3236;
+  --color-gray-3: #2e3236;
+  --color-gray-4: #242424;
+  /* -- */
+
+  color: var(--color-text);
+  background-color: var(--color-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,7 +33,20 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* scheme vars */
+    --color-bg: var(--color-gray-1);
+    --color-bg-2: var(--color-white);
+    --color-text: var(--color-gray-4);
+    --color-shadow: var(--color-gray-2);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* scheme vars */
+    --color-bg: var(--color-gray-4);
+    --color-bg-2: var(--color-gray-3);
+    --color-text: var(--color-white);
+    --color-shadow: var(--color-gray-2);
   }
 }
