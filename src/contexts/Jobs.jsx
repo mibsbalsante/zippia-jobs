@@ -7,6 +7,7 @@ const Jobs = createContext()
 
 export const JobsProvider = ({ children }) => {
   const [list, setList] = useState([])
+  const [results, setResults] = useState([])
 
   useEffect(() => {
     fetch(`${API_URL}/jobs`, API_CONFIG)
@@ -16,11 +17,14 @@ export const JobsProvider = ({ children }) => {
           throw new Error(text)
         })
       })
-      .then(({ jobs }) => setList(jobs))
+      .then(({ jobs }) => {
+        setList(jobs)
+        setResults(jobs.splice(0, 10))
+      })
       .catch(({ message }) => console.error(message))
   }, [])
 
-  return <Jobs.Provider value={{ list }}>{children}</Jobs.Provider>
+  return <Jobs.Provider value={{ list, results }}>{children}</Jobs.Provider>
 }
 
 JobsProvider.propTypes = {

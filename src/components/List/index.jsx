@@ -5,11 +5,11 @@ import ListCard from "@cmp/ListCard"
 import styles from "./styles.module.scss"
 
 const List = () => {
-  const { list } = useJobsContext()
+  const { results } = useJobsContext()
 
   return (
     <section className={styles.list}>
-      {list.map(job => (
+      {results.map(job => (
         <ListCard key={job.jobId} {...job} />
       ))}
     </section>
