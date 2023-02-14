@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore --fix",
     "preview": "vite preview",
     "postinstall": "ln -sf $(pwd)/.hooks/* $(pwd)/.git/hooks/; exit 0"
   },
@@ -20,6 +21,10 @@
     "@vitejs/plugin-react": "^3.1.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.4",
     "vite": "^4.1.0"
   },
   "config": {
