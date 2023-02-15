@@ -14,6 +14,7 @@ const ListCard = ({
   jobLevels,
   jobTitle,
   location,
+  postedDate,
 }) => (
   <article className={styles.card}>
     <h3 className={styles.title}>{jobTitle}</h3>
@@ -37,8 +38,10 @@ const ListCard = ({
 
     <Ribbon>{easyApplyFlag}</Ribbon>
 
+    <p className={styles.salary}>{estimatedSalary}</p>
+
     <div className={styles.footer}>
-      <p>{estimatedSalary}</p>
+      <p>Posted {postedDate}</p>
 
       {jobLevels.length > 0 && (
         <>
@@ -66,6 +69,7 @@ ListCard.propTypes = {
   jobLevels: PropTypes.arrayOf(PropTypes.string),
   jobTitle: PropTypes.string,
   location: PropTypes.string,
+  postedDate: PropTypes.string,
 }
 
 export default ListCard

@@ -1,0 +1,22 @@
+.filter {
+  @include container;
+
+  flex-direction: column;
+  padding: 16px;
+  margin-bottom: 24px;
+  gap: 12px;
+
+  &Title {
+    margin: 0;
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  &Button {
+    background: white;
+
+    &Active {
+      background: blue;
+    }
+  }
+}

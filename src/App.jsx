@@ -1,6 +1,7 @@
 import { JobsProvider } from "@ctx/Jobs"
 
 import Header from "@cmp/Header"
+import Filter from "@cmp/Filter"
 import List from "@cmp/List"
 
 import "./App.css"
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <JobsProvider>
         <Header />
+        <Filter />
         <List />
       </JobsProvider>
     </div>

@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
   margin: 0;
 }
 
@@ -36,6 +36,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.salary {
+  margin: 0;
 }
 
 .footer {
