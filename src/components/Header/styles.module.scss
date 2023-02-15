@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  background-color: var(--color-gray-4);
+  color: var(--color-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  user-select: none;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--color-blue-2);
+  }
+
+  &Container {
+    @include container;
+
+    align-items: center;
+    height: var(--header-height);
+  }
+
+  &Title {
+    font-size: 1.125rem;
+  }
+}

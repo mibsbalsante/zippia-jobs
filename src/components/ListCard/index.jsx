@@ -16,7 +16,7 @@ const ListCard = ({
   location,
 }) => (
   <article className={styles.card}>
-    <h2 className={styles.title}>{jobTitle}</h2>
+    <h3 className={styles.title}>{jobTitle}</h3>
 
     <p className={styles.company}>
       {companyLogo && (
