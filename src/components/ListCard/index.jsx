@@ -16,8 +16,6 @@ const ListCard = ({
   location,
 }) => (
   <article className={styles.card}>
-    <Ribbon>{easyApplyFlag}</Ribbon>
-
     <h2 className={styles.title}>{jobTitle}</h2>
 
     <p className={styles.company}>
@@ -36,6 +34,8 @@ const ListCard = ({
       className={styles.shortDescription}
       dangerouslySetInnerHTML={{ __html: clearHTML(jobDescription) }}
     ></p>
+
+    <Ribbon>{easyApplyFlag}</Ribbon>
 
     <div className={styles.footer}>
       <p>{estimatedSalary}</p>

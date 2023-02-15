@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 :root,
 button {
   font-size: 1rem;
@@ -10,6 +14,8 @@ button {
   color-scheme: light dark;
 
   /* global vars */
+  --header-height: 60px;
+
   --color-white: #fff;
 
   --color-blue: #3174ee;

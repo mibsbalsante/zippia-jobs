@@ -7,6 +7,7 @@
   color: var(--color-white);
   font-weight: 600;
   font-size: 0.8rem;
+  width: fit-content;
 
   &::before {
     position: absolute;
@@ -18,5 +19,20 @@
     background-color: var(--color-blue-2);
     transform: rotate(160deg);
     z-index: -1;
+  }
+
+  @media (max-width: 768px) {
+    right: 20px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    position: relative;
+    right: unset;
+    top: unset;
+    display: inline-block;
   }
 }
