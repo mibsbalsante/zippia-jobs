@@ -5,6 +5,7 @@ import styles from "./styles.module.scss"
 const Filter = () => {
   const {
     jobTitle,
+    list,
     getCompanies,
     selectedCompany,
     shouldFilterByDate,
@@ -25,27 +26,33 @@ const Filter = () => {
     <main className={styles.filter}>
       <h2 className={styles.filterTitle}>{jobTitle} Jobs</h2>
 
-      <div>
-        <select value={selectedCompany} onChange={handleFilterCompany}>
-          <option value="">All Companies</option>
-          {companies.map(company => (
-            <option key={company} value={company}>
-              {company}
-            </option>
-          ))}
-        </select>
+      {list.length > 0 && (
+        <div className={styles.filterForm}>
+          <select
+            className={styles.filterSelect}
+            value={selectedCompany}
+            onChange={handleFilterCompany}
+          >
+            <option value="">All Companies</option>
+            {companies.map(company => (
+              <option key={company} value={company}>
+                {company}
+              </option>
+            ))}
+          </select>
 
-        <button
-          className={`
+          <button
+            className={`
             ${styles.filterButton} ${
-            shouldFilterByDate ? styles.filterButtonActive : ""
-          }
+              shouldFilterByDate ? styles.filterButtonActive : ""
+            }
           `}
-          onClick={handleFilterByDate}
-        >
-          <span></span> Filter by last 7 days
-        </button>
-      </div>
+            onClick={handleFilterByDate}
+          >
+            <span /> Filter by last 7 days
+          </button>
+        </div>
+      )}
     </main>
   )
 }
