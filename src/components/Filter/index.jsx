@@ -1,5 +1,7 @@
 import { useJobsContext } from "@ctx/Jobs"
 
+import Toggle from "@cmp/Toggle"
+
 import styles from "./styles.module.scss"
 
 const Filter = () => {
@@ -41,16 +43,13 @@ const Filter = () => {
             ))}
           </select>
 
-          <button
-            className={`
-            ${styles.filterButton} ${
-              shouldFilterByDate ? styles.filterButtonActive : ""
-            }
-          `}
-            onClick={handleFilterByDate}
+          <Toggle
+            isActive={shouldFilterByDate}
+            handleClick={handleFilterByDate}
           >
-            <span /> Filter by last 7 days
-          </button>
+            {" "}
+            Filter by last 7 days
+          </Toggle>
         </div>
       )}
     </main>

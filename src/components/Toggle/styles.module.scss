@@ -1,0 +1,54 @@
+.toggle {
+  appearance: none;
+  background: transparent;
+  border: 0 none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  span {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    box-shadow: 0 0 4px -3px var(--color-shadow);
+    background-color: var(--color-text);
+    border-radius: 100px;
+    transition: background-color 0.3s linear;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      background-color: var(--color-bg-2);
+      top: 3px;
+      left: 3px;
+      transform: translateX(0);
+      transition: transform 0.3s linear;
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 0 none;
+
+    span {
+      outline: 2px solid var(--color-text);
+      outline-offset: -1px;
+    }
+  }
+
+  &Active {
+    span {
+      background-color: var(--color-blue);
+      &::after {
+        transform: translateX(calc(100% + 6px));
+      }
+    }
+  }
+}
