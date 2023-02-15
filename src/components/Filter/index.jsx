@@ -1,23 +1,23 @@
 import { useJobsContext } from "@ctx/Jobs"
-import { useState } from "react"
 
 import styles from "./styles.module.scss"
 
 const Filter = () => {
-  const { jobTitle, getCompanies, filterByCompany, filterByPostingDate } =
-    useJobsContext()
+  const {
+    jobTitle,
+    getCompanies,
+    selectedCompany,
+    shouldFilterByDate,
+    setSelectedCompany,
+    setFilterByDate,
+  } = useJobsContext()
   const companies = getCompanies()
-
-  const [selectedCompany, setSelectedCompany] = useState("")
-  const [shouldFilterByDate, setFilterByDate] = useState(false)
 
   const handleFilterCompany = ({ target }) => {
     setSelectedCompany(target.value)
-    filterByCompany(target.value)
   }
 
   const handleFilterByDate = () => {
-    filterByPostingDate(!shouldFilterByDate)
     setFilterByDate(!shouldFilterByDate)
   }
 

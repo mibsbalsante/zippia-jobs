@@ -8,33 +8,54 @@ const Jobs = createContext()
 const _getTopResults = results => [...results].splice(0, 10)
 
 export const JobsProvider = ({ children }) => {
+  // use as page title
   const [jobTitle] = useState("Business Analyst")
+
+  // complete list + filtered list
   const [list, setList] = useState([])
   const [results, setResults] = useState([])
 
+  // filters
+  const [selectedCompany, setSelectedCompany] = useState("")
+  const [shouldFilterByDate, setFilterByDate] = useState(false)
+
   const getCompanies = () => list.map(({ companyName }) => companyName).sort()
 
-  const filterByCompany = selectedCompany => {
-    let jobsFound = list.filter(
+  // internal methods
+  const _filterByCompany = filtered => {
+    let jobsFound = filtered.filter(
       ({ companyName }) => companyName === selectedCompany
     )
-    jobsFound = jobsFound.length ? jobsFound : list
 
-    setResults(_getTopResults(jobsFound))
+    jobsFound = jobsFound.length || selectedCompany ? jobsFound : filtered
+
+    return jobsFound
   }
 
-  const filterByPostingDate = shouldFilter => {
-    if (!shouldFilter) return setResults(_getTopResults(list))
+  const _filterByPostingDate = filtered => {
+    if (!shouldFilterByDate) return filtered
 
     let sevenDaysAgo = new Date()
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7)
 
-    const jobsFound = list.filter(
+    const jobsFound = filtered.filter(
       ({ postingDate }) => new Date(postingDate) >= sevenDaysAgo
     )
 
-    setResults(_getTopResults(jobsFound))
+    return jobsFound
   }
+
+  const _filter = () => {
+    let jobsFound = _filterByCompany(list)
+    jobsFound = _filterByPostingDate(jobsFound)
+    jobsFound = _getTopResults(jobsFound)
+
+    setResults(jobsFound)
+  }
+
+  useEffect(() => {
+    _filter()
+  }, [selectedCompany, shouldFilterByDate])
 
   useEffect(() => {
     fetch(`${API_URL}/jobs`, getAPIConfig({ jobTitle }))
@@ -58,8 +79,10 @@ export const JobsProvider = ({ children }) => {
         list,
         results,
         getCompanies,
-        filterByCompany,
-        filterByPostingDate,
+        selectedCompany,
+        shouldFilterByDate,
+        setSelectedCompany,
+        setFilterByDate,
       }}
     >
       {children}
