@@ -1,6 +1,6 @@
 export const API_URL = "https://www.zippia.com/api"
 
-export const API_CONFIG = {
+export const getAPIConfig = (body = {}) => ({
   method: "POST",
   mode: "cors",
   headers: {
@@ -11,9 +11,10 @@ export const API_CONFIG = {
     companySkills: true,
     dismissedListingHashes: [],
     fetchJobDesc: true,
-    jobTitle: "Business Analyst",
+    jobTitle: "",
     locations: [],
     numJobs: 20,
     previousListingHashes: [],
+    ...body,
   }),
-}
+})
